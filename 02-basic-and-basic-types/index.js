@@ -16,3 +16,11 @@ combineValues = addUp;
 // combineValues = 67;
 // combineValues = printResult; //undefined
 console.log(combineValues(8, 8));
+//function types and callbacks
+var callBack = function (n1, n2, cb) {
+    var result = n1 + n2;
+    cb(result);
+};
+callBack(5, 12, function (result) {
+    console.log("Result is ".concat(result));
+});
