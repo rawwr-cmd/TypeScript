@@ -21,3 +21,5 @@ function errorCheck(
 }
 
 errorCheck("An error occured", 500);
+
+//watchmode tsc nameofthefile -w
