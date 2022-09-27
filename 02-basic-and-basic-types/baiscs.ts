@@ -11,8 +11,12 @@ const add = (a: number, b: number, showResult: boolean, message: string) => {
   }
 };
 
+// let num1: number;
+// num1 = 5;
+
 const num1 = 10;
 const num2 = 20;
 const printResult = true;
 const resultPhrase = "Result is: ";
+
 add(num1, num2, printResult, resultPhrase);

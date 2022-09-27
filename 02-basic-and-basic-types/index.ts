@@ -1,29 +1,17 @@
-const sumUp = (
-  a: number | string,
-  b: number | string,
-  c: "as-number" | "as-text"
-) => {
-  let result;
-
-  if ((typeof a === "number" && typeof b === "number") || c === "as-number") {
-    result = +a + +b;
-  } else {
-    result = a.toString() + b.toString();
-  }
-
-  return result;
-
-  //   if (c === "as-number") {
-  //     return +result;
-  //   } else {
-  //     return result.toString();
-  //   }
+const addUp = (a: number, b: number) => {
+  return a + b;
 };
 
-const addOn = sumUp("bull", "dog", "as-text");
-const addOn1 = sumUp(67, 78, "as-number");
-const addOn2 = sumUp("67", "78", "as-number");
+const printResult = (num: number): void => {
+  console.log("Result: " + num);
+};
 
-console.log(addOn);
-console.log(addOn1);
-console.log(addOn2);
+printResult(addUp(5, 12));
+
+//undefined is a type in the ts
+// let someValue: undefined
+
+const printResult1 = (num: number): undefined => {
+  console.log(num);
+  return;
+};
