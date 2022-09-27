@@ -1,43 +1,29 @@
-// const person: {
-//   name: string;
-//   age: number;
-// } = {
-const person = {
-  name: "John",
-  age: 30,
+const sumUp = (
+  a: number | string,
+  b: number | string,
+  c: "as-number" | "as-text"
+) => {
+  let result;
+
+  if ((typeof a === "number" && typeof b === "number") || c === "as-number") {
+    result = +a + +b;
+  } else {
+    result = a.toString() + b.toString();
+  }
+
+  return result;
+
+  //   if (c === "as-number") {
+  //     return +result;
+  //   } else {
+  //     return result.toString();
+  //   }
 };
 
-console.log(person);
+const addOn = sumUp("bull", "dog", "as-text");
+const addOn1 = sumUp(67, 78, "as-number");
+const addOn2 = sumUp("67", "78", "as-number");
 
-const product: {
-  id: string;
-  price: number;
-  tags: string[];
-  details: {
-    title: string;
-    description: string;
-  };
-  productDetails: [number, string];
-} = {
-  id: "abc1",
-  price: 12.99,
-  tags: ["great-offer", "hot-and-new"],
-  details: {
-    title: "Red Carpet",
-    description: "A great carpet - almost brand-new!",
-  },
-  productDetails: [1, "nice product"],
-};
-
-product.productDetails.push("must buy if you are a cat");
-// product.productDetails[1] = 1;
-console.log(product);
-
-//arrays
-let movies: string[];
-movies = ["The Godfather", "The Godfather II", "The Godfather III"];
-
-for (const movie of movies) {
-  console.log(movie.toUpperCase());
-  //   console.log(movie.map()); // ERROR!
-}
+console.log(addOn);
+console.log(addOn1);
+console.log(addOn2);
