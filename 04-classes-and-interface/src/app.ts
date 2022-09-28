@@ -1,18 +1,21 @@
 class Department {
-  name: string;
+  //  private readonly id : string;
+  //   private name: string;
+  //   private id : string;
   private employees: string[] = [];
 
-  constructor(n: string) {
-    this.name = n;
+  constructor(private readonly id: string, public name: string) {
+    // this.name = n;
   }
 
   //method- can be accessed as a private
   describe(this: Department) {
-    const { name } = this;
-    console.log(`Department: ${name}`);
+    const { id, name } = this;
+    console.log(`Department ${id}: ${name}`);
   }
 
   addEmployee(employee: string) {
+    // this.id = 'yu'; // readonly
     this.employees.push(employee);
   }
 
@@ -22,10 +25,10 @@ class Department {
   }
 }
 
-const accounting = new Department("Accounting");
+const accounting = new Department("D1", "Accounting");
 // console.log(accounting);
 // accounting.employees[0] = "Max";
-accounting.name = "maths";
+// accounting.name = "maths";
 
 accounting.addEmployee("rawwr");
 accounting.addEmployee("maxi");
