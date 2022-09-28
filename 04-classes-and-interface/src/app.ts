@@ -2,7 +2,7 @@ class Department {
   //  private readonly id : string;
   //   private name: string;
   //   private id : string;
-  private employees: string[] = [];
+  protected employees: string[] = [];
 
   constructor(private readonly id: string, public name: string) {
     // this.name = n;

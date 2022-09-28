@@ -1,7 +1,7 @@
 class Itdepartment extends Department {
   constructor(id: string, public admins: string[]) {
     super(id, "IT Department");
-    this.admins = admins;
+    // this.admins = admins;
   }
 }
 
@@ -19,7 +19,14 @@ console.log(acc1);
 class AccountingDepartment extends Department {
   constructor(id: string, private reports: string[]) {
     super(id, "Accounting");
-    this.reports = reports;
+  }
+
+  //overridding methods
+  addEmployee(name: string) {
+    if (name === "rawwr") {
+      return;
+    }
+    this.employees.push(name);
   }
 
   addReport(text: string) {
@@ -36,5 +43,8 @@ const accountingReport = new AccountingDepartment("D2", [
   "quaterly report",
 ]);
 
+accountingReport.addEmployee("rawwr");
+accountingReport.addEmployee("pallu");
+accountingReport.printEmployeeInformation();
 accountingReport.addReport("Employees Worksheets");
 accountingReport.printReport();

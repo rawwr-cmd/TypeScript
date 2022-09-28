@@ -3,7 +3,6 @@ class Itdepartment extends Department {
     constructor(id, admins) {
         super(id, "IT Department");
         this.admins = admins;
-        this.admins = admins;
     }
 }
 const acc1 = new Itdepartment("D2", ["Max"]);
@@ -17,7 +16,12 @@ class AccountingDepartment extends Department {
     constructor(id, reports) {
         super(id, "Accounting");
         this.reports = reports;
-        this.reports = reports;
+    }
+    addEmployee(name) {
+        if (name === "rawwr") {
+            return;
+        }
+        this.employees.push(name);
     }
     addReport(text) {
         this.reports.push(text);
@@ -30,6 +34,9 @@ const accountingReport = new AccountingDepartment("D2", [
     "Balancesheet",
     "quaterly report",
 ]);
+accountingReport.addEmployee("rawwr");
+accountingReport.addEmployee("pallu");
+accountingReport.printEmployeeInformation();
 accountingReport.addReport("Employees Worksheets");
 accountingReport.printReport();
 //# sourceMappingURL=inheritance.js.map
