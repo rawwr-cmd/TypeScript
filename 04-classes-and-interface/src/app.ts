@@ -2,10 +2,19 @@ class Department {
   //  private readonly id : string;
   //   private name: string;
   //   private id : string;
+  static fiscalYear = 2020;
   protected employees: string[] = [];
 
   constructor(private readonly id: string, public name: string) {
     // this.name = n;
+    // console.log(Department.fiscalYear); //static method/keyword accessed here
+  }
+
+  // The static keyword is a non-access modifier used for methods and attributes.
+  //  Static methods/attributes can be accessed without creating an object of a class.
+  // can be accessed in construcor, de-attach from instances, so use className
+  static createEmployee(name: string) {
+    return { name: name };
   }
 
   //method- can be accessed as a private
@@ -29,6 +38,9 @@ const accounting = new Department("D1", "Accounting");
 // console.log(accounting);
 // accounting.employees[0] = "Max";
 // accounting.name = "maths";
+
+const emp1 = Department.createEmployee("trayolor");
+console.log(emp1, Department.fiscalYear);
 
 accounting.addEmployee("rawwr");
 accounting.addEmployee("maxi");
