@@ -1,20 +1,11 @@
 "use strict";
-class Department {
-    constructor(id, name) {
-        this.id = id;
-        this.name = name;
-        this.employees = [];
-    }
-    static createEmployee(name) {
-        return { name: name };
-    }
-    addEmployee(employee) {
-        this.employees.push(employee);
-    }
-    printEmployeeInformation() {
-        console.log(this.employees.length);
-        console.log(this.employees);
-    }
-}
-Department.fiscalYear = 2020;
+let user1;
+user1 = {
+    name: "rawwr",
+    age: 19,
+    greet(phrase) {
+        console.log(`${phrase} ${this.name}`);
+    },
+};
+user1.greet("Hi there - I am");
 //# sourceMappingURL=app.js.map
