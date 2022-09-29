@@ -3,8 +3,22 @@
 // program but you don't really care about the rest of the properties of the class
 // that fulfills that contract as long as it does.
 
+//interface as a function
+// type asFunction = (a: number, b: number) => number;
+
+interface asFunction {
+  (a: number, b: number): number;
+}
+
+let add: asFunction;
+
+add = (n1: number, n2: number) => {
+  return n1 + n2;
+};
+
 interface Named {
   readonly name: string;
+  outputName?: string; //optional property
 }
 
 //u can extends one or more interfaces, u can't do this in classes
