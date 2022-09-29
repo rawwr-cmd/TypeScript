@@ -3,6 +3,10 @@ class Itdepartment extends Department {
     super(id, "IT Department");
     // this.admins = admins;
   }
+
+  describe() {
+    console.log("IT Department - ID: " + this.id);
+  }
 }
 
 const acc1 = new Itdepartment("D2", ["Max"]);
@@ -40,6 +44,10 @@ class AccountingDepartment extends Department {
     this.lastReport = reports[0];
   }
 
+  describe() {
+    console.log("Accounting Department - ID: " + this.id);
+  }
+
   //overridding methods
   addEmployee(name: string) {
     if (name === "rawwr") {
@@ -69,5 +77,6 @@ accountingReport.addEmployee("pallu");
 accountingReport.printEmployeeInformation();
 accountingReport.addReport("Employees Worksheets");
 console.log(accountingReport.mostRecentReport);
-
 accountingReport.printReport();
+
+accountingReport.describe();

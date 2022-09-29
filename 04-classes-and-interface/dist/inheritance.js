@@ -4,6 +4,9 @@ class Itdepartment extends Department {
         super(id, "IT Department");
         this.admins = admins;
     }
+    describe() {
+        console.log("IT Department - ID: " + this.id);
+    }
 }
 const acc1 = new Itdepartment("D2", ["Max"]);
 acc1.addEmployee("popers");
@@ -30,6 +33,9 @@ class AccountingDepartment extends Department {
         }
         this.addReport(value);
     }
+    describe() {
+        console.log("Accounting Department - ID: " + this.id);
+    }
     addEmployee(name) {
         if (name === "rawwr") {
             return;
@@ -55,4 +61,5 @@ accountingReport.printEmployeeInformation();
 accountingReport.addReport("Employees Worksheets");
 console.log(accountingReport.mostRecentReport);
 accountingReport.printReport();
+accountingReport.describe();
 //# sourceMappingURL=inheritance.js.map

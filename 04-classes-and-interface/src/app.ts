@@ -1,11 +1,11 @@
-class Department {
+abstract class Department {
   //  private readonly id : string;
   //   private name: string;
   //   private id : string;
   static fiscalYear = 2020;
   protected employees: string[] = [];
 
-  constructor(private readonly id: string, public name: string) {
+  constructor(protected readonly id: string, public name: string) {
     // this.name = n;
     // console.log(Department.fiscalYear); //static method/keyword accessed here
   }
@@ -18,10 +18,11 @@ class Department {
   }
 
   //method- can be accessed as a private
-  describe(this: Department) {
-    const { id, name } = this;
-    console.log(`Department ${id}: ${name}`);
-  }
+  abstract describe(this: Department): void;
+  // {
+  // const { id, name } = this;
+  // console.log(`Department ${id}: ${name}`);
+  // }
 
   addEmployee(employee: string) {
     // this.id = 'yu'; // readonly
@@ -34,19 +35,22 @@ class Department {
   }
 }
 
-const accounting = new Department("D1", "Accounting");
+//cannot create an instance of an abstract class
+//you cannot instantiaite an abstract class
+
+// const accounting = new Department("D1", "Accounting");
 // console.log(accounting);
 // accounting.employees[0] = "Max";
 // accounting.name = "maths";
 
-const emp1 = Department.createEmployee("trayolor");
-console.log(emp1, Department.fiscalYear);
+// const emp1 = Department.createEmployee("trayolor");
+// console.log(emp1, Department.fiscalYear);
 
-accounting.addEmployee("rawwr");
-accounting.addEmployee("maxi");
+// accounting.addEmployee("rawwr");
+// accounting.addEmployee("maxi");
 
-accounting.describe();
-accounting.printEmployeeInformation();
+// accounting.describe();
+// accounting.printEmployeeInformation();
 
 //accessing the this keyword
 // const accCopy = { name: "Cloud", describe: accounting.describe };
