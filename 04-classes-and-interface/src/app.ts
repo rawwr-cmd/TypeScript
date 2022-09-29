@@ -1,18 +1,41 @@
-interface Person {
-  name: string;
-  age: number;
+// Interfaces define contracts, and that's the key word.
+// You use an interface when you need to define a contract in your
+// program but you don't really care about the rest of the properties of the class
+// that fulfills that contract as long as it does.
 
+interface Named {
+  readonly name: string;
+}
+
+//u can extends one or more interfaces, u can't do this in classes
+interface Greetable extends Named {
+  // readonly name: string;
   greet(phrase: string): void;
 }
 
-let user1: Person;
+// type Greeable = {
+//   readonly name: string;
+//   greet(phrase: string): void;
+// };
 
-user1 = {
-  name: "rawwr",
-  age: 19,
+//u can implement one or more than one interface
+class Person implements Greetable {
+  age = 10;
+
+  constructor(public name: string) {}
+
   greet(phrase: string) {
     console.log(`${phrase} ${this.name}`);
-  },
-};
+  }
+}
 
-user1.greet("Hi there - I am");
+// let user1: Person;
+
+let user1: Greetable;
+
+user1 = new Person("Papi");
+// user1.name = "silker";           //readonly
+
+user1.greet("hey there, I am--");
+
+console.log(user1);
