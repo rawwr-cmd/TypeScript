@@ -92,3 +92,42 @@ const useVehicle = (vehicle: Vehicle) => {
     vehicle.carryCargo(1000);
   }
 };
+
+useVehicle(v1);
+useVehicle(v2);
+
+//Descriminated unions(making type guards easier)
+interface Bird {
+  type: "bird";
+  flyingSpeed: number;
+}
+
+interface Horse {
+  type: "horse";
+  runningSpeed: number;
+}
+
+type Animal = Bird | Horse;
+
+const moveAnimal = (animal: Animal) => {
+  //   if ("flyingSpeed" in animal) {
+  //     console.log("Moving with speed: ", animal.flyingSpeed);
+  //   }
+  let speed;
+  switch (animal.type) {
+    case "bird":
+      speed = animal.flyingSpeed;
+      break;
+
+    case "horse":
+      speed = animal.runningSpeed;
+  }
+  console.log("Moving with speed: ", speed);
+};
+
+// const Bird1 = {
+//   type: "bird",
+//   flyingSpeed: 10.789,
+// };
+
+moveAnimal({ type: "bird", flyingSpeed: 10.789 });
