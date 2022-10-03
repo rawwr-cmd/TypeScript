@@ -36,3 +36,11 @@ const fetchedUserData = {
 // console.log(fetchedUserData.job && fetchedUserData.job.title);
 
 console.log(fetchedUserData?.job?.title);
+
+//nullish coalescing
+const userInput = null;
+
+//only for null or undefined(nullish coallescing)
+const storedData = userInput ?? "DEFAULT";
+
+console.log(storedData);
