@@ -37,3 +37,8 @@ function countAndDescribe(element) {
     return [element, descriptionText];
 }
 console.log(countAndDescribe(["sports", "cooking"]));
+//keyof constraint
+function valueKey(object, key) {
+    return object[key];
+}
+console.log(valueKey({ name: "rawwr", hobbies: "sleeping" }, "hobbies"));
