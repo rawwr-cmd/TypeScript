@@ -16,6 +16,7 @@ promise.then((data) => {
 });
 
 // creating a generic type
+//extends string | number
 function merge<T extends Object, U extends Object>(objA: T, objB: U) {
   return Object.assign(objA, objB);
 }
@@ -24,6 +25,7 @@ const mergedObj = merge<{ name: string; hobbies: string[] }, { age: number }>(
   { name: "rawwr", hobbies: ["Sports", "kitchen"] },
   { age: 69 }
 );
+
 console.log(mergedObj.age); //error
 
 //second example
@@ -33,3 +35,20 @@ function displayDataType<T, U>(id: T, name: U): void {
   );
 }
 displayDataType<number, string>(101, "Abhishek");
+
+interface Lengthy {
+  length: number;
+}
+
+// another generic type
+function countAndDescribe<T extends Lengthy>(element: T): [T, string] {
+  let descriptionText = "Got no value";
+  if (element.length === 1) {
+    descriptionText = "Got 1 element";
+  } else if (element.length > 1) {
+    descriptionText = "Got " + element.length + " elements";
+  }
+  return [element, descriptionText];
+}
+
+console.log(countAndDescribe(["sports", "cooking"]));
