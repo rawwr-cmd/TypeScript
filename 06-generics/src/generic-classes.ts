@@ -63,3 +63,5 @@ console.log(rawwr);
 const readOnly1: Readonly<string[]> = ["sleeping", "eating"];
 // readOnly1.push("cattling"); // error read only thus no change
 //readOnly1.pop(); // error read only thus no change
+
+
