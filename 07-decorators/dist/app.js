@@ -11,14 +11,17 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 //decorator factory
-// function Logger(logString: string) {
-//   return function (constructor: Function) {
-//     console.log(logString);
-//     console.log(constructor);
-//   };
-// }
-function withTemplate(template, hookId) {
+function Logger(logString) {
+    console.log("LOGGER FACTORY");
     return function (constructor) {
+        console.log(logString);
+        console.log(constructor);
+    };
+}
+function withTemplate(template, hookId) {
+    console.log("TEMPLATE FACTORY");
+    return function (constructor) {
+        console.log("rendering template");
         const hookElement = document.getElementById(hookId);
         const person1 = new constructor();
         if (hookElement) {
@@ -36,6 +39,7 @@ class Person {
     }
 };
 Person = __decorate([
+    Logger("LOGGING - PERSON"),
     withTemplate("<h1>My Person Object</h1>", "app")
     // @Logger("LOGGING - PERSON")
 ], Person);
@@ -47,3 +51,4 @@ console.log(pers);
 method, accessor, property, or parameter. Decorators use the form @expression ,
 where expression must evaluate to a function that will be called at runtime with
 information about the decorated declaration */
+//bottom most decorators execute first

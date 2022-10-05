@@ -5,15 +5,18 @@
 // }
 
 //decorator factory
-// function Logger(logString: string) {
-//   return function (constructor: Function) {
-//     console.log(logString);
-//     console.log(constructor);
-//   };
-// }
+function Logger(logString: string) {
+  console.log("LOGGER FACTORY");
+  return function (constructor: Function) {
+    console.log(logString);
+    console.log(constructor);
+  };
+}
 
 function withTemplate(template: string, hookId: string) {
+  console.log("TEMPLATE FACTORY");
   return function (constructor: any) {
+    console.log("rendering template");
     const hookElement = document.getElementById(hookId);
     const person1 = new constructor();
     if (hookElement) {
@@ -23,6 +26,7 @@ function withTemplate(template: string, hookId: string) {
   };
 }
 
+@Logger("LOGGING - PERSON")
 @withTemplate("<h1>My Person Object</h1>", "app")
 
 // @Logger("LOGGING - PERSON")
@@ -43,3 +47,5 @@ console.log(pers);
 method, accessor, property, or parameter. Decorators use the form @expression ,
 where expression must evaluate to a function that will be called at runtime with
 information about the decorated declaration */
+
+//bottom most decorators execute first
