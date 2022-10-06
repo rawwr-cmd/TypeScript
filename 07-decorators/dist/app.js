@@ -20,14 +20,20 @@ function Logger(logString) {
 }
 function withTemplate(template, hookId) {
     console.log("TEMPLATE FACTORY");
-    return function (constructor) {
-        console.log("rendering template");
-        const hookElement = document.getElementById(hookId);
-        const person1 = new constructor();
-        if (hookElement) {
-            hookElement.innerHTML = template;
-            hookElement.querySelector("h1").textContent = person1.name;
-        }
+    //our original constructor will not just produce any but also name
+    return function (originalConstructor) {
+        return class extends originalConstructor {
+            constructor(..._) {
+                super();
+                console.log("rendering template");
+                const hookElement = document.getElementById(hookId);
+                const person1 = new originalConstructor();
+                if (hookElement) {
+                    hookElement.innerHTML = template;
+                    hookElement.querySelector("h1").textContent = person1.name;
+                }
+            }
+        };
     };
 }
 let Person = 

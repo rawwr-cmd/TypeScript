@@ -15,14 +15,22 @@ function Logger(logString: string) {
 
 function withTemplate(template: string, hookId: string) {
   console.log("TEMPLATE FACTORY");
-  return function (constructor: any) {
-    console.log("rendering template");
-    const hookElement = document.getElementById(hookId);
-    const person1 = new constructor();
-    if (hookElement) {
-      hookElement.innerHTML = template;
-      hookElement.querySelector("h1")!.textContent = person1.name;
-    }
+  //our original constructor will not just produce any but also name
+  return function <T extends { new (...args: any[]): { name: string } }>(
+    originalConstructor: T
+  ) {
+    return class extends originalConstructor {
+      constructor(..._: any[]) {
+        super();
+        console.log("rendering template");
+        const hookElement = document.getElementById(hookId);
+        const person1 = new originalConstructor();
+        if (hookElement) {
+          hookElement.innerHTML = template;
+          hookElement.querySelector("h1")!.textContent = person1.name;
+        }
+      }
+    };
   };
 }
 
