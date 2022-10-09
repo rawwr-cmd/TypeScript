@@ -14,7 +14,9 @@ function Log(target, propertyName) {
 }
 function Log2(target, name, descriptor) {
     console.log("Method decorator!");
-    console.log(target, name, descriptor); //constructor, getPrice, descriptor
+    console.log(target); //constructor, getPrice, descriptor
+    console.log(name); //constructor, getPrice, descriptor
+    console.log(descriptor); //{writable: true, enumerable: false, configurable: true, value: ƒ}
 }
 function Log3(target, name, position) {
     console.log("Parameter decorator!");
@@ -44,3 +46,32 @@ __decorate([
     Log2,
     __param(0, Log3)
 ], Product.prototype, "getPriceWithTax", null);
+const p1 = new Product("Book", 19);
+const p2 = new Product("Book 2", 29);
+function Autobind(_, _2, descriptor) {
+    const originalMethod = descriptor.value; //function
+    const adjDescriptor = {
+        configurable: true,
+        enumerable: false,
+        get() {
+            const boundFn = originalMethod.bind(this);
+            return boundFn;
+        },
+    };
+    return adjDescriptor;
+}
+class Printer {
+    constructor() {
+        this.message = "This works!";
+    }
+    showMessage() {
+        console.log(this.message);
+    }
+}
+__decorate([
+    Autobind
+], Printer.prototype, "showMessage", null);
+const p = new Printer();
+const button = document.querySelector("button");
+button.addEventListener("click", p.showMessage);
+// button.addEventListener("click", p.showMessage.bind(p));
